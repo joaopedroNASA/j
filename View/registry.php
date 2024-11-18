@@ -8,14 +8,14 @@
     
     <link rel="stylesheet" href="../Assets/Css/style.css">
     
-    <title>Login Dark/Light Mode</title>
+    
 </head>
 <body>   
     <main id="container">
         <form id="login_form">
             <!-- FORM HEADER -->
             <div id="form_header">
-                <h1>Registro</h1>
+                <h1>Registrar-se</h1>
                 <i id="mode_icon" class="fa-solid fa-moon"></i>
             </div>
 
@@ -56,18 +56,32 @@
                         </div>
                     </label>
                     
-                    <!-- FORGOT PASSWORD -->
-                    <div id="forgot_password">
-                        <a href="resgistro.html">
-                            Registrar-se
-                        </a>
+                    <div class="input-box">
+                        <label for="telefone">
+                            Telefone
+                            <div class="input-field">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="number" id="telefone" name="telefone">
+                            </div>
+                        </label>
                     </div>
+                    
+                    <div class="input-box">
+                        <label for="Data">
+                            Data de nascimento
+                            <div class="input-field">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <input type="date" id="idade" name="idade">
+                            </div>
+                        </label>
+                    </div>
+
                 </div>
             </div>
 
             <!-- LOGIN BUTTON -->
             <button type="submit" id="login_button">
-                Entrar
+                Registar
             </button>
         </form>
     </main>

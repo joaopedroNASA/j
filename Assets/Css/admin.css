@@ -1,0 +1,9 @@
+.icon{
+    padding: 10px;
+    border-radius:6px;
+    font-size: 20px
+}
+
+.container {
+    flex-direction:column;
+}

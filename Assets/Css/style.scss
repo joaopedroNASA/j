@@ -1,0 +1,27 @@
+.icon {
+    width: fit-content;
+}
+
+.icon i {
+    color: grey;
+}
+.icon, .icon i {
+    transition: .3s ease;
+}
+
+.box:hover {
+    .icon{
+        background-color: grey;
+        i {
+            color: white;
+        }
+    }
+}
+
+.box:hover {
+    .title{
+        background-color:grey ;
+        color: white;
+       
+}
+}
