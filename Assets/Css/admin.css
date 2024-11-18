@@ -1,9 +1,39 @@
+.container-principal {
+    display: flex;
+}
 .icon{
     padding: 10px;
     border-radius:6px;
     font-size: 20px
 }
 
-.container {
+.container-1 {
     flex-direction:column;
+    display: flex;
+    gap: 20px;
+    width: 40px;
+    
 }
+
+
+
+.section {
+    flex-direction: column;
+    margin-left: 30px;
+    background-color: red;
+    width: 250px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+.button{
+
+    color: blue;
+     border-color: blue;
+     width: 220px;
+     border-radius: 5px;
+     height: 30px;
+}
+

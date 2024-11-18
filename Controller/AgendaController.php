@@ -1,37 +1,30 @@
 <?php
-require_once 'C:/aluno2/xampp/htdocs/emGrupo/model/TarefasModel.php';
 
-class TarefasController
+require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\Model\AgendaModel.php';
+class AgendaController
 {
+    private $pdo;
+    private $model;
+    public function __construct($pdo)
+    {
+        $this->pdo = $pdo;
+        $this->model = new AgendaModel($pdo);
+    }
 
-   private $tarefasModel;
-   public function __construct($pdo)
-   {
-      $this->tarefasModel = new TarefasModel($pdo);
-   }
-   public function criarTarefas($nome_tarefa, $descricao_tarefa, $responsavel_tarefa, $data_inicio, $data_conclusao, $status_tarefa)
-   {
-      $this->tarefasModel->criarTarefas($nome_tarefa, $descricao_tarefa, $responsavel_tarefa, $data_inicio, $data_conclusao, $status_tarefa);
-   }
+    public function marcarConsulta($assunto, $especialista, $horario)
+    {
+        $this->model->marcarConsulta($assunto, $especialista, $horario);
+    }
+    public function listarConsultas()
+    {
+        $this->model->listarConsultas();
+    }
+    public function atualizarConsulta($status_tarefa, $id_tarefa)
+    {
+        $this->model->atualizarConsulta($status_tarefa, $id_tarefa);
+    }
 
-   public function listarTarefas()
-   {
-      return $this->tarefasModel->listarTarefas();
-   }
-
-   public function exibirListaTarefas()
-   {
-      $tarefas = $this->tarefasModel->listarTarefas();
-      include 'C:/aluno2/xampp/htdocs/emGrupo/view/todo/listar.php';
-   }
-
-   public function atualizarTarefas($status_tarefa, $id_tarefa)
-   {
-      $this->tarefasModel->atualizarTarefas($status_tarefa, $id_tarefa);
-   }
-
-   public function deletarTarefas($id_tarefa)
-   {
-      $this->tarefasModel->deletarTarefas($id_tarefa);
-   }
+    public function deletarConsulta($id_tarefa){
+        $this->model->deletarConsulta($id_tarefa);
+    }
 }
