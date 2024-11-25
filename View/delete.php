@@ -1,17 +1,15 @@
 <?php
-require_once 'C:/aluno2/xampp/htdocs/emGrupo/config.php';
-require_once 'C:/aluno2/xampp/htdocs/emGrupocontroller/TarefasController.php';
+require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\View\db_connect.php';
+require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\Controller\AgendaController.php';
 
-$tarefasController = new TarefasController($pdo);
+$controller = new AgendaController($pdo);
 
-$tarefas = $tarefasController->listarTarefas();
 
-if (isset($_POST['id_tarefa'])) {
-    $tarefasController->deletarTarefas($_POST['id_tarefa']);
-    header("Location:index.php");
+if (isset($_POST['id'])) {
+    $controller->deletarConsulta($_POST['id']);
+    header("Location:admin.php");
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +19,7 @@ if (isset($_POST['id_tarefa'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style2.css">
     <link rel="stylesheet" href="../../select.scss">
-    <title>Deletar Competidor</title>
+    <title>Deletar Consulta</title>
 </head>
 
 <body>
@@ -30,14 +28,15 @@ if (isset($_POST['id_tarefa'])) {
         <section class="crud-section">
             <a href="index.php"><button>Voltar para o início</button></a>
             <div class="card-container">
-            <h1>Deletar Competidor</h1>
-                <form method="post">
-                    <select name="id_tarefa" id="multi-select">
+            <h1>Deletar Consulta</h1>
+                <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
+                    <select name="id" id="multi-select">
                         <?php
-                        foreach ($tarefas as $tarefa): ?>
+                        $consultas = $controller->listarConsultas();
+                        foreach ($consultas as $consulta): ?>
 
                             <div class="select select--multiple">
-                                <option value="<?= $tarefa['id_tarefa']; ?>"><?= $tarefa['nome_tarefa']; ?></option>
+                                <option value="<?= $consulta['id']; ?>"><?= $consulta['assunto']; ?></option>
                             </div>
                         <?php endforeach; ?>
                     </select>

@@ -10,28 +10,36 @@ class AgendaModel
         $this->pdo = $pdo;
     }
 
-    public function marcarConsulta($assunto, $especialista, $horario)
+    public function marcarConsulta($assunto, $medico, $data, $horario)
     {
-        $sql = "INSERT INTO consultas (assunto, especialista, horario) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO consultas (assunto, especialista, data, horario) VALUES (?, ?, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$assunto, $especialista, $horario]);
+        $stmt->execute([$assunto, $medico, $data, $horario]);
     }
     public function listarConsultas()
     {
-        $sql = "SELECT * FROM tarefas";
+        $sql = "SELECT * FROM consultas";
         $stmt = $this->pdo->query($sql);
+        $stmt->execute();
         return $stmt->fetchALL(PDO::FETCH_ASSOC);
     }
-    public function atualizarConsulta($status_tarefa, $id_tarefa)
+    public function listarMedicos()
     {
-        $sql = "UPDATE tarefas SET status_tarefa = ? WHERE id_tarefa = ?";
+        $sql = "SELECT * FROM medicos";
+        $stmt = $this->pdo->query($sql);
+        $stmt->execute();
+        return $stmt->fetchALL(PDO::FETCH_ASSOC);
+    }
+    public function atualizarConsulta($assunto, $medico, $data, $horario, $id)
+    {
+        $sql = "UPDATE consultas SET assunto = ? especialista = ? data = ? horario = ? WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$status_tarefa, $id_tarefa]);
+        $stmt->execute([$assunto, $medico, $data, $horario, $id]);
     }
 
-    public function deletarConsulta($id_tarefa){
-        $sql = "DELETE FROM tarefas WHERE id_tarefa = ?";
+    public function deletarConsulta($id){
+        $sql = "DELETE FROM consultas WHERE id = ?";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$id_tarefa]);
+        $stmt->execute([$id]);
     }
 }

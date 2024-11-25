@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\Controller\HorariosController.php';
+require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\Model\HorariosModel.php';
 
 class HorariosController
 {
@@ -12,10 +12,6 @@ class HorariosController
         $this->model = new HorariosModel($pdo);
     }
     public function buscarHorarios() {
-        $sql = "SELECT * FROM horarios";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        $horarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $horarios;
+        return $this->model->buscarHorarios();
     }
 }

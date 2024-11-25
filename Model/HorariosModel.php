@@ -14,7 +14,6 @@ class HorariosModel
         $sql = "SELECT * FROM horarios";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
-        $horarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $horarios;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

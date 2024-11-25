@@ -1,13 +1,13 @@
 <?php
-require_once 'C:/aluno2/xampp/htdocs/emGrupo/config.php';
-require_once 'C:/aluno2/xampp/htdocs/emGrupo/controller/TarefasController.php';
+require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\View\db_connect.php';
+require_once 'C:\aluno2\xampp\htdocs\SistemadeAgendaMedica\Controller\AgendaController.php';
 
-$tarefasController = new $agendaController($pdo);
+$controller = new AgendaController($pdo);
 
-$tarefas = $agendaController->listarTarefas();
+$consultas = $controller->listarConsultas();
 
-if (isset($_POST['tarefa_id']) && isset($_POST['statusTarefa'])) {
-    $tarefasController->atualizarTarefas($_POST['statusTarefa'], $_POST['tarefa_id']);
+if (isset($_POST['id'])) {
+    $controller->atualizarConsulta($_POST['assunto'], $_POST['medico'], $_POST['data'], $_POST['horario'], $_POST['id']);
     header("Location: index.php");
 }
 ?>
@@ -25,29 +25,26 @@ if (isset($_POST['tarefa_id']) && isset($_POST['statusTarefa'])) {
 </head>
 
 <body>
-    <section class="crud-section">
 
-        <a href="index.php"><button>Voltar para o início</button></a>
-        <div class="card-container">
-            <h1>Atualizar competidor</h1>
-            <form method="post">
-                <select name="tarefa_id">
-                    <?php
-                    foreach ($tarefas as $tarefa): ?>
-                        <div class="select select--multiple">
-                            <option value="<?= $tarefa['id_tarefa']; ?>"><?= $tarefa['nome_tarefa']; ?></option>
-                        </div>
-                    <?php endforeach; ?>
-                </select>
-                        <select name="statusTarefa" id="statusTarefa">
-                            <option value="pendente">Pendente</option>
-                            <option value="concluida">Concluída</option>
-                        </select>
-                <button type="submit">Atualizar</button>
-            </form>
-        </div>
+    <section>
+        <form>
+            <label for="">assunto</label>
+            <input type="text" name="assunto">
+
+            <label for="">especialista</label>
+            <input type="text" name="especialista">
+
+            <label for="">Data</label>
+            <input type="date" name="data">
+            
+            <label for="">Horário</label>
+            <input type="time" name="horario">
+            
+            <button type="submit">Atualizar</button>
+
+
+        </form>
     </section>
-
 </body>
 
 </html>

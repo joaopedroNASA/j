@@ -11,20 +11,26 @@ class AgendaController
         $this->model = new AgendaModel($pdo);
     }
 
-    public function marcarConsulta($assunto, $especialista, $horario)
+    public function marcarConsulta($assunto, $medico, $data, $horario)
     {
-        $this->model->marcarConsulta($assunto, $especialista, $horario);
+        $this->model->marcarConsulta($assunto, $medico, $data, $horario);
     }
     public function listarConsultas()
     {
-        $this->model->listarConsultas();
-    }
-    public function atualizarConsulta($status_tarefa, $id_tarefa)
-    {
-        $this->model->atualizarConsulta($status_tarefa, $id_tarefa);
+        return $this->model->listarConsultas();
     }
 
-    public function deletarConsulta($id_tarefa){
-        $this->model->deletarConsulta($id_tarefa);
+    public function listarMedicos()
+    {
+        return $this->model->listarMedicos();
+    }
+    public function atualizarConsulta($assunto, $medico, $data, $horario, $id)
+    {
+        $this->model->atualizarConsulta($assunto, $medico, $data, $horario, $id);
+    }
+
+    public function deletarConsulta($id)
+    {
+        $this->model->deletarConsulta($id);
     }
 }
