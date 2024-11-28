@@ -1,0 +1,281 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #F7F7F7; /* Fundo cinza claro moderno */
+    color: #2D2D2D; /* Texto principal em cinza escuro */
+    padding: 20px;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2D2D2D; /* Cor do título */
+    margin-bottom: 10px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+header h1:hover {
+    color: #2B6ED1; /* Azul escuro para o hover */
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555; /* Texto sutil */
+}
+
+/* Seção de Projetos - Alinhamento vertical */
+.projetos {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espaço entre os projetos */
+    margin-top: 30px;
+}
+
+/* Estilo individual dos projetos */
+.projeto {
+    display: flex;
+    flex-direction: row-reverse; /* Imagem à direita */
+    align-items: center;
+    background-color: #fff; /* Fundo branco para o card do projeto */
+    border-radius: 12px; /* Bordas arredondadas mais suaves */
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+}
+
+.projeto:hover {
+    transform: translateY(-10px); /* Eleva o projeto ao passar o mouse */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15); /* Aumenta a sombra no hover */
+}
+
+/* Imagem do projeto */
+.projeto img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+}
+
+.projeto:hover img {
+    transform: scale(1.05); /* Efeito de zoom na imagem */
+}
+
+/* Texto (Título e Descrição) */
+.projeto div {
+    margin-right: 20px;
+}
+
+.projeto h2 {
+    font-size: 1.8rem;
+    color: #2D2D2D; /* Título em cinza escuro */
+    margin-bottom: 10px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.projeto h2:hover {
+    color: #FF7043; /* Laranja suave para o hover */
+}
+
+.projeto p {
+    font-size: 1rem;
+    color: #666; /* Texto da descrição em cinza mais claro */
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Animação para exibir a descrição */
+.projeto:hover p {
+    opacity: 1;
+}
+
+/* Efeito de animação na descrição */
+.projeto h2, .projeto p {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.projeto:nth-child(1) h2,
+.projeto:nth-child(1) p {
+    animation-delay: 0.2s;
+}
+
+.projeto:nth-child(2) h2,
+.projeto:nth-child(2) p {
+    animation-delay: 0.4s;
+}
+
+/* Keyframes para animação de fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #2D2D2D; /* Rodapé em cinza escuro */
+    color: #fff; /* Texto branco no rodapé */
+    font-size: 0.9rem;
+}
+
+footer p {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 1s;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* --------------------- RESPONSIVIDADE --------------------- */
+
+/* Para dispositivos pequenos (smartphones em modo retrato) */
+@media (max-width: 480px) {
+    /* Cabeçalho */
+    header h1 {
+        font-size: 1.8rem; /* Menor tamanho de título */
+    }
+
+    header p {
+        font-size: 1rem; /* Tamanho de texto reduzido */
+    }
+
+    /* Alteração do layout dos projetos */
+    .projeto {
+        flex-direction: column; /* Exibe imagem e texto em coluna */
+        text-align: center;
+    }
+
+    .projeto div {
+        margin-right: 0;
+        margin-bottom: 20px; /* Mais espaço entre imagem e texto */
+    }
+
+    .projeto img {
+        width: 100%; /* A imagem ocupa toda a largura disponível */
+        max-width: 300px; /* Define uma largura máxima */
+        height: auto; /* Ajusta a altura proporcionalmente */
+        margin-bottom: 15px; /* Espaço entre a imagem e o texto */
+    }
+
+    .projeto h2 {
+        font-size: 1.4rem; /* Tamanho de título reduzido */
+    }
+
+    .projeto p {
+        font-size: 0.9rem; /* Texto da descrição menor */
+    }
+
+    footer {
+        font-size: 0.8rem; /* Texto do rodapé menor */
+    }
+}
+
+/* Para dispositivos de tamanho médio (tablets ou smartphones em modo paisagem) */
+@media (max-width: 768px) {
+    /* Cabeçalho */
+    header h1 {
+        font-size: 2rem; /* Tamanho de título moderado */
+    }
+
+    /* Alteração do layout dos projetos */
+    .projeto {
+        flex-direction: column; /* Exibe imagem e texto em coluna */
+        text-align: center;
+    }
+
+    .projeto div {
+        margin-right: 0;
+        margin-bottom: 20px; /* Mais espaço entre imagem e texto */
+    }
+
+    .projeto img {
+        width: 100%; /* Imagem ocupa toda a largura disponível */
+        max-width: 250px; /* Largura máxima para a imagem */
+        height: auto; /* Ajusta a altura proporcionalmente */
+        margin-bottom: 15px; /* Espaço entre a imagem e o texto */
+    }
+
+    .projeto h2 {
+        font-size: 1.6rem; /* Título um pouco menor */
+    }
+
+    .projeto p {
+        font-size: 1rem; /* Texto da descrição mantido */
+    }
+
+    footer {
+        font-size: 0.9rem; /* Texto do rodapé ajustado */
+    }
+}
+
+/* Para desktops pequenos */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Cabeçalho */
+    header h1 {
+        font-size: 2.2rem; /* Tamanho de título moderado */
+    }
+
+    .projeto img {
+        width: 230px; /* Reduz a largura das imagens */
+        height: 130px; /* Ajusta a altura das imagens */
+    }
+
+    .projeto h2 {
+        font-size: 1.7rem; /* Tamanho de título um pouco maior */
+    }
+
+    .projeto p {
+        font-size: 1.1rem; /* Texto um pouco maior */
+    }
+
+    footer {
+        font-size: 1rem; /* Texto do rodapé mais visível */
+    }
+}
+
+/* Para desktops grandes */
+@media (min-width: 1025px) {
+    /* Cabeçalho */
+    header h1 {
+        font-size: 2.5rem; /* Tamanho de título maior */
+    }
+
+    .projeto img {
+        width: 250px; /* Imagem maior */
+        height: 150px; /* Altura da imagem mantida */
+    }
+
+    .projeto h2 {
+        font-size: 1.8rem; /* Tamanho do título ajustado */
+    }
+
+    .projeto p {
+    }
+}
